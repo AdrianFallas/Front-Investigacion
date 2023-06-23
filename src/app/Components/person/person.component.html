@@ -1,0 +1,24 @@
+<div class="container">
+<form [formGroup]="personForm" (submit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput type="text" formControlName="name"  placeholder="Enter your name">
+      <mat-error *ngIf="personForm.get('name')?.hasError('required')">Name is required</mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Age</mat-label>
+      <input matInput type="number" formControlName="age" placeholder="Enter your age">
+      <mat-error *ngIf="personForm.get('age')?.hasError('required')">Age is required</mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" placeholder="Enter your email">
+      <mat-error *ngIf="personForm.get('email')?.hasError('required')">Email is required</mat-error>
+      <mat-error *ngIf="personForm.get('email')?.hasError('email')">Invalid email format</mat-error>
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit" [disabled]="!personForm.valid">Save</button>
+  </form>
+</div>
