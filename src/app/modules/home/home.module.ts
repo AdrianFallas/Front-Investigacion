@@ -14,6 +14,9 @@ import { HomeComponent } from './home/home.component';
   imports: [
     CommonModule,
     HomeRoutingModule
+  ],
+  exports: [
+    HeaderComponent
   ]
 })
 export class HomeModule { }

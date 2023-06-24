@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PersonComponent } from '../person/person.component';
 import { Person } from 'src/app/modules/cliente/Models/Person';
 import { PersonService } from 'src/app/modules/cliente/Services/PersonService';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-person-list',
@@ -22,6 +23,7 @@ export class PersonListComponent implements OnInit {
       data => this.people = data,
       err => console.error(err)
     );
+    
   }
 
   editPerson(person: Person) {
@@ -32,18 +34,29 @@ export class PersonListComponent implements OnInit {
         this.loadPeople();
       }
     });
+    
   }
 
   deletePerson(person: Person) {
-    if (window.confirm('Are you sure you want to delete this person?')) {
-      this.personService.deletePerson(person.id).subscribe(
-        () => {
-          console.log('Person deleted successfully');
-          this.loadPeople();
-        },
-        (        err: any) => console.error(err)
-      );
-    }
+    Swal.fire({
+      title: 'Confirmar eliminación',
+      text: '¿Estás seguro de que quieres eliminar esta persona?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.personService.deletePerson(person.id).subscribe(
+          () => {
+            Swal.fire('success','Eliminado exitosamente', 'success');
+            this.loadPeople();
+          },
+          (err: any) => Swal.fire('Error', err, 'error')
+        );
+      }
+    });
+  
   }
 
 }

@@ -11,7 +11,7 @@ import { ProductRoutingModule } from './product-routing.module';
 import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { ProductService } from './Services/ProductService';
-
+import { HomeModule } from '../home/home.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { ProductService } from './Services/ProductService';
     MatInputModule,
     MatIconModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    HomeModule
   ],
   providers: [
     ProductService

@@ -1,4 +1,4 @@
-.header {
+/*.header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,4 +30,64 @@
 
 .header-links li a:hover {
   color: #ff6347;
+}*/
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  padding: 20px;
+}
+.header-links {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+}
+.navbar {
+  background: linear-gradient(to top, #ffdadae1, #ffffff);  display: flex;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 0;
+  box-shadow: none;
+}
+
+.navbar-brand {
+  color: #333;
+  font-weight: bold;
+}
+
+.navbar-nav li a {
+  color: #333;
+  font-weight: bold;
+}
+
+.navbar-nav .active a,
+.navbar-nav .active a:hover,
+.navbar-nav .active a:focus {
+  background-color: #333;
+  color: #fff;
+}
+
+.navbar-nav .dropdown-menu li a {
+  color: #333;
+  font-weight: bold;
+}
+
+.navbar-nav .dropdown-menu li a:hover,
+.navbar-nav .dropdown-menu li a:focus {
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+.navbar-nav .dropdown-menu .divider {
+  background-color: #333;
+}
+
+.caret {
+  border-top-color: #333;
 }

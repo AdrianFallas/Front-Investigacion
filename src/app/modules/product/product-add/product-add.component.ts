@@ -41,6 +41,7 @@ export class ProductAddComponent {
         () => console.log('Product updated successfully'),
         err => console.error(err)
       );
+
     } else {
       this.productService.addProduct(product).subscribe(
         () => console.log('Product added successfully'),
