@@ -1,6 +1,5 @@
 .container {
-  background-color: rgb(2, 61, 61);
-  display: flex;
+  background: linear-gradient(to bottom, #26224fd4, #333);  display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;

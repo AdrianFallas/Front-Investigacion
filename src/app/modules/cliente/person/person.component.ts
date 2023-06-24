@@ -41,13 +41,17 @@ export class PersonComponent implements OnInit {
         () => console.log('Person updated successfully'),
         err => console.error(err)
       );
+      window.location.reload();
     } else {
       this.personService.addPerson(person).subscribe(
         () => console.log('Person added successfully'),
         err => console.error(err)
       );
+      this.router.navigate(['client/person-list']);
     }
-    this.router.navigate(['client/person-list']);
+    
+    
+    
     this.personForm.reset();
   }
 }

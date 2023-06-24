@@ -11,6 +11,7 @@ import { ClienteRoutingModule } from './cliente-routing.module';
 import { PersonComponent } from './person/person.component';
 import { PersonListComponent } from './person-list/person-list.component';
 import { PersonService } from './Services/PersonService';
+import { HomeModule } from '../home/home.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PersonService } from './Services/PersonService';
     MatInputModule,
     MatIconModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    HomeModule
   ],
   providers: [
     PersonService

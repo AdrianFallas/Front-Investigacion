@@ -17,16 +17,17 @@ export class PersonService {
     return this.http.get<Person[]>(`${this.baseURL}`);
   }
 
-  addPerson(person: Person) {
-    return this.http.post(`${this.baseURL}`, person);
+  addPerson(person: Person): Observable<any> {
+    person.id=1;
+    return this.http.post<any>(`${this.baseURL}`, person);
   }
 
   updatePerson(id: number, person: Person): Observable<Person> {
-    return this.http.put<Person>(`${this.baseURL}/persons/${id}`, person);
+    return this.http.put<Person>(`${this.baseURL}/${id}`, person);
   }
 
   deletePerson(id: number): Observable<any> {
-    return this.http.delete(`${this.baseURL}/persons/${id}`);
+    return this.http.delete(`${this.baseURL}/${id}`);
   }
 
 

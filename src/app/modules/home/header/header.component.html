@@ -1,5 +1,30 @@
+<!--
 <ul class="header-links">
     <li><a routerLink="" class="header-link">Inicio</a></li>
     <li><a routerLink="/client" class="header-link">Cliente</a></li>
     <li><a routerLink="/product" class="header-link">Producto</a></li>
-  </ul>
+  </ul>-->
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li class="active"><a routerLink="">Inicio</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" >Cliente
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/client">Registrar</a></li>
+            <li><a routerLink="/client/person-list">Listar</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" >Producto
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/product">Registrar</a></li>
+            <li><a routerLink="/product/product-list">Listar</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
