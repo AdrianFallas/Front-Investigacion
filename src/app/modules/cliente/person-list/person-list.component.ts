@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { PersonComponent } from '../person/person.component';
 import { Person } from 'src/app/modules/cliente/Models/Person';
 import { PersonService } from 'src/app/modules/cliente/Services/PersonService';
@@ -26,16 +26,22 @@ export class PersonListComponent implements OnInit {
     
   }
 
-  editPerson(person: Person) {
-    console.log(person.id);
-    const dialogRef = this.dialog.open(PersonComponent, { data: person });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.loadPeople();
-      }
-    });
-    
-  }
+
+editPerson(person: Person) {
+  console.log(person.id);
+  const dialogRef: MatDialogRef<PersonComponent> = this.dialog.open(PersonComponent, {
+    data: person,
+    width: '700px',
+    height: '500px'
+  });
+  
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      this.loadPeople();
+    }
+  });
+}
+
 
   deletePerson(person: Person) {
     Swal.fire({

@@ -35,13 +35,11 @@ export class PersonComponent implements OnInit {
 
   onSubmit() {
     const person = this.personForm.value as Person;
-    
     if (person.id) {
       this.personService.updatePerson(person.id, person).subscribe(
         () => console.log('Person updated successfully'),
         err => console.error(err)
       );
-      window.location.reload();
     } else {
       this.personService.addPerson(person).subscribe(
         () => console.log('Person added successfully'),
