@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PersonComponent } from './Components/person/person.component';
-import { PersonListComponent } from './Components/person-list/person-list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'person', pathMatch: 'full' }
-  , { path: "person", component: PersonComponent, pathMatch: "full" }
-  , { path: "person-list", component: PersonListComponent, pathMatch: "full" }
+  {path: '', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)},
+  {path: 'client', loadChildren: () => import('./modules/cliente/cliente.module').then(m => m.ClienteModule)},
+  {path: 'product', loadChildren: () => import('./modules/product/product.module').then(m => m.ProductModule)}
 ];
 
 @NgModule({

@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  padding: 20px;
+}
+
+.header-links {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.header-links li {
+  margin-right: 20px;
+}
+
+.header-links li a {
+  text-decoration: none;
+  color: #272727;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.header-links li a:hover {
+  color: #ff6347;
+}
