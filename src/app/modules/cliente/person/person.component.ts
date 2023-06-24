@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Person } from 'src/app/Models/Person';
-import { PersonService } from 'src/app/Services/PersonService';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { Person } from 'src/app/modules/cliente/Models/Person';
+import { PersonService } from 'src/app/modules/cliente/Services/PersonService';
 
 @Component({
   selector: 'app-person',
@@ -12,19 +14,28 @@ export class PersonComponent implements OnInit {
   personForm!: FormGroup;
   person: Person | null = null;
 
-  constructor(private fb: FormBuilder, private personService: PersonService) {}
+  constructor(
+    private fb: FormBuilder,
+    private personService: PersonService, 
+    private router: Router, 
+    @Optional() @Inject(MAT_DIALOG_DATA) private data: any) {
+      if(data){
+        this.person=data;
+      }
+    }
 
   ngOnInit(): void {
     this.personForm = this.fb.group({
-      id: [null],
-      name: ['', Validators.required],
-      age: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]]
+      id: [this.person?.id],
+      nombre: [this.person?.nombre, Validators.required],
+      age: [this.person?.age, Validators.required],
+      email: [this.person?.email, [Validators.required, Validators.email]]
     });
   }
 
   onSubmit() {
     const person = this.personForm.value as Person;
+    
     if (person.id) {
       this.personService.updatePerson(person.id, person).subscribe(
         () => console.log('Person updated successfully'),
@@ -36,6 +47,7 @@ export class PersonComponent implements OnInit {
         err => console.error(err)
       );
     }
+    this.router.navigate(['client/person-list']);
     this.personForm.reset();
   }
 }

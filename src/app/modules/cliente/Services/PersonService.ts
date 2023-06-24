@@ -1,22 +1,24 @@
 
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { Person } from '../Models/Person';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class PersonService {
     
-  baseURL = 'http://localhost:5065/api/Hotel/';
+  baseURL = 'http://localhost:5056/api/Person';
 
   constructor(private http: HttpClient) { }
 
   getPersons(): Observable<Person[]> {
-    return this.http.get<Person[]>(`${this.baseURL}/persons`);
+    return this.http.get<Person[]>(`${this.baseURL}`);
   }
 
-  addPerson(person: Person): Observable<Person> {
-    return this.http.post<Person>(`${this.baseURL}/persons`, person);
+  addPerson(person: Person) {
+    return this.http.post(`${this.baseURL}`, person);
   }
 
   updatePerson(id: number, person: Person): Observable<Person> {
@@ -26,4 +28,6 @@ export class PersonService {
   deletePerson(id: number): Observable<any> {
     return this.http.delete(`${this.baseURL}/persons/${id}`);
   }
+
+
 }

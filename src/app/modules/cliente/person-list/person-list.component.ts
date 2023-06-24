@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PersonComponent } from '../person/person.component';
-import { Person } from 'src/app/Models/Person';
-import { PersonService } from 'src/app/Services/PersonService';
+import { Person } from 'src/app/modules/cliente/Models/Person';
+import { PersonService } from 'src/app/modules/cliente/Services/PersonService';
 
 @Component({
   selector: 'app-person-list',
@@ -25,6 +25,7 @@ export class PersonListComponent implements OnInit {
   }
 
   editPerson(person: Person) {
+    console.log(person.id);
     const dialogRef = this.dialog.open(PersonComponent, { data: person });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -44,4 +45,5 @@ export class PersonListComponent implements OnInit {
       );
     }
   }
+
 }
